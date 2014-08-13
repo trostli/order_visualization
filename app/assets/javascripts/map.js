@@ -6,7 +6,7 @@ sprig.infoWindow = new google.maps.InfoWindow;
 
 sprig.makeMap = function() {
   var mapOptions = {
-    center: new google.maps.LatLng(32.7150, -117.1625),
+    center: new google.maps.LatLng(37.7616357, -122.4408616),
     zoom: 13,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
@@ -19,7 +19,7 @@ sprig.getMarkers = function(e) {
       url:"/categories",
       type: "GET",
       dataType: "json",
-      data: $('#category_form').serialize()
+      data: $('#time_form').serialize()
     }).done(sprig.saveMarkers)
 }
 
@@ -52,7 +52,7 @@ sprig.MakeMarkers = function(markerData) {
   });
 }
 
-proMapper.makeMarker = function (index, markerData) {
+sprig.makeMarker = function (index, markerData) {
   global = markerData
   var myLatlng = new google.maps.LatLng(markerData.latitude, markerData.longitude)
   var num = index
@@ -67,7 +67,7 @@ proMapper.makeMarker = function (index, markerData) {
   return marker
 }
 
-proMapper.clearMarkers = function() {
+sprig.clearMarkers = function() {
   for (var i = 0; i < markersArray.length; i++) {
     markersArray[i].setMap(null);
   }
@@ -77,8 +77,8 @@ proMapper.clearMarkers = function() {
 
 
 function initializeMap() {
-    proMapper.makeMap();
-    $('#category_form').on('submit', proMapper.getMarkers);
+    sprig.makeMap();
+    $('#time_form').on('submit', sprig.getMarkers);
 }
 
 $(document).ready(function(){
