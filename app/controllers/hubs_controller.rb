@@ -13,4 +13,10 @@ class HubsController < ApplicationController
     end
   end
 
+  def import
+    Hub.import(params[:file])
+    redirect_to root_url, notice:"Hubs imported."
+  end
+
+
 end
