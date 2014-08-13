@@ -1,0 +1,8 @@
+/*CSS for  map*/
+
+#map-canvas {
+  position:relative;
+  width:100%;
+  background-color: #0c0c0c;
+  z-index: 1;
+ }

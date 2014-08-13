@@ -1,0 +1,66 @@
+#hub_selector {
+  background-color: #2ecc71;
+  padding: 0.5%;
+  padding-bottom: 100px;
+  position: relative;
+  top: 0;
+  width: 100%;
+  opacity: 1;
+  text-align: center;
+  z-index: 2;
+}
+
+#title {
+  text-align: left;
+  color: white;
+  font-family: 'Oswald', sans-serif;
+  float: left;
+  margin: 21px;
+  font-size: 2em;
+}
+
+select {
+  background: none;
+  background-color: rgba(0,0,0,.25);
+  border: 0;
+  top: 50%;
+  border-radius: 3px;
+  color:white;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.80em;
+  padding: 0.08em;
+  margin-top: 1.5em;
+  text-shadow:rgba(0,0,0,0) 0px -1px;
+  width: 210px;
+  -webkit-font-smoothing:antialiased;
+  -webkit-appearance: none;
+}
+
+#time_form {
+  margin: 21px;
+  float: left;
+}
+
+.button.quiet {
+  color: #61D6E5;
+  font-size: 2em;
+  font-weight: 700;
+}
+
+select[type=dropdown]:hover {
+  color:white;
+  background-color:rgba(0,0,0,.5);
+  box-shadow:
+    inset rgba(0,0,0,0) 0 0 0,
+    inset rgba(0,0,0,0) 0 0 0;
+  }
+
+input {
+  padding: 100px;
+}
+
+@media screen and (max-width: 500px) {
+#hub_selector {
+  padding-bottom: 200px;
+  }
+}
