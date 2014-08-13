@@ -16,7 +16,7 @@ sprig.makeMap = function() {
 sprig.getMarkers = function(e) {
     e.preventDefault();
     $.ajax({
-      url:"/categories",
+      url:"/hubs",
       type: "GET",
       dataType: "json",
       data: $('#time_form').serialize()
@@ -32,10 +32,12 @@ sprig.saveMarkers = function(markerData) {
 sprig.MakeMarkers = function(markerData) {
   var self = this
   $.each(markerData, function(index, element) {
-    var contentInfo = '<p>' + '<strong>Title: </strong>' + String(element.title) + '</p>'
-    +  '<p>' + '<strong>Compensation: </strong>'  + String(element.compensation) + '</p>'
-    + '<p>' + '<strong>Description: </strong>'  + String(element.description) + '</p>'
-    + '<p>' + '<strong>Address: </strong>'  + String(element.address) + '</p>';
+    var contentInfo =
+    '<p>' + '<strong>Assigned to hub #: </strong>' + String(element.hub_id) + '</p>'
+    +  '<p>' + '<strong># of items: </strong>'  + String(element.num_items) + '</p>'
+    + '<p>' + '<strong>Created at: </strong>'  + String(element.created_at) + '</p>'
+    + '<p>' + '<strong>Started at: </strong>'  + String(element.started_at) + '</p>'
+    + '<p>' + '<strong>Completed at: </strong>'  + String(element.completed_at) + '</p>';
 
     var marker = self.makeMarker(index, element)
 
