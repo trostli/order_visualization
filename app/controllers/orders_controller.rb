@@ -1,4 +1,4 @@
-class OrderssController < ApplicationController
+class OrdersController < ApplicationController
 
   def import
     Order.import(params[:file])

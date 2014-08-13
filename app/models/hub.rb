@@ -1,6 +1,6 @@
 require "csv"
 
-class Hub < ActiveRecord::base
+class Hub < ActiveRecord::Base
   validates :latitude, :longitude, presence: true
   has_many :orders
 

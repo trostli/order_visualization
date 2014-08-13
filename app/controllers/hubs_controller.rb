@@ -3,8 +3,8 @@ class HubsController < ApplicationController
   def index
     @orders = Order.all
 
-    if params['category']
-      @jobs = Job.where(category_id: Category.find_by(name: params['category']).id)
+    if params['hub']
+      @orders = Order.where(category_id: Hub.find_by(name: params['hub']).id)
     end
 
     respond_to do |format|
