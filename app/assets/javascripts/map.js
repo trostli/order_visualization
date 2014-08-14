@@ -117,6 +117,7 @@ sprig.clearMarkers = function() {
 function initializeMap() {
     sprig.makeMap();
     $('#time_form').on('submit', sprig.getMarkers);
+    $('#date_form').on('submit', sprig.getMarkers);
 }
 
 $(document).ready(function(){
