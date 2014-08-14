@@ -3,6 +3,10 @@ class HubsController < ApplicationController
   def index
     @hubs = Hub.all
 
+    if params['hub_number']
+      @hubs = Hub.find(params['hub_number'].to_i)
+    end
+
     respond_to do |format|
       format.html
       format.json { render :json => @hubs.to_json  }
@@ -16,3 +20,4 @@ class HubsController < ApplicationController
 
 
 end
+
