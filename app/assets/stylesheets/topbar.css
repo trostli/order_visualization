@@ -33,6 +33,10 @@ label {
   padding: 5px;
 }
 
+#submit_button {
+  float: left;
+}
+
 h2 {
   width: 100%;
   text-align: left;
@@ -44,7 +48,8 @@ h2 {
 }
 
 form {
-  width: 450px;
+  width: 100%;
+  float: left;
 }
 
 .form-column {
@@ -53,6 +58,7 @@ form {
 }
 
 select, .date-picker {
+  float: left;
   background: none;
   background-color: rgba(0,0,0,.25);
   border: 0;
@@ -62,7 +68,7 @@ select, .date-picker {
   font-family: 'Open Sans', sans-serif;
   font-size: 0.7em;
   padding: 0.08em;
-  margin-top: 1.5em;
+  margin-right: 1.5em;
   text-shadow:rgba(0,0,0,0) 0px -1px;
   width: 130px;
   -webkit-font-smoothing:antialiased;
@@ -70,14 +76,9 @@ select, .date-picker {
 }
 
 .scoping-div {
-  padding: 10px;
+  padding: 30px 40px 10px 10px;
   float: left;
-  height: 150px;
-}
-
-#time_form {
-  margin: 21px;
-  float: left;
+  height: 100%;
 }
 
 .button.quiet {
