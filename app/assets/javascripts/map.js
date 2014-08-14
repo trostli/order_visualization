@@ -61,12 +61,48 @@ sprig.makeMarker = function (index, markerData) {
   var marker = new google.maps.Marker({
     position: myLatlng,
     title: 'Click to Zoom',
-    icon: 'https://chart.googleapis.com/chart?chst=d_map_pin_letter_withshadow&chld=|FF0000|000000'
+    icon: sprig.getMarkerIcon(markerData.hub_id)
   });
   marker.setMap(this.map);
   markersArray.push(marker);
 
   return marker
+}
+
+sprig.getMarkerIcon = function (hub_id) {
+  switch(hub_id) {
+    case 1:
+        iconPath = "/assets/icons/blue_order.png"
+        break;
+    case 2:
+        iconPath = "/assets/icons/green_order.png"
+        break;
+    case 3:
+        iconPath = "/assets/icons/orange_order.png"
+        break;
+    case 4:
+        iconPath = "/assets/icons/pink_order.png"
+        break;
+    case 5:
+        iconPath = "/assets/icons/purple_order.png"
+        break;
+    case 6:
+        iconPath = "/assets/icons/red_order.png"
+        break;
+    case 7:
+        iconPath = "/assets/icons/turquoise_order.png"
+        break;
+    case 8:
+        iconPath = "/assets/icons/violet_order.png"
+        break;
+    case 9:
+        iconPath = "/assets/icons/yellow_order.png"
+        break;
+    default:
+        iconPath = "https://chart.googleapis.com/chart?chst=d_map_pin_letter_withshadow&chld=|FF0000|000000"
+  }
+
+  return iconPath
 }
 
 sprig.clearMarkers = function() {
