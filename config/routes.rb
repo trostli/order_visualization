@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :hubs, :only => [:index]
+  resources :orders, :only => [:index]
 
   get 'order/import', to: 'orders#upload'
   post 'order/import', to: 'orders#import'
