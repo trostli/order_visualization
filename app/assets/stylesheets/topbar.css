@@ -1,7 +1,8 @@
 #hub_selector {
   background-color: #2ecc71;
   padding: 0.5%;
-  padding-bottom: 100px;
+  padding-bottom: 130px;
+  padding-top: 0;
   position: relative;
   top: 0;
   width: 100%;
@@ -19,16 +20,39 @@
   font-size: 2em;
 }
 
-.label {
+label {
   text-align: left;
   color: white;
   font-family: 'Oswald', sans-serif;
   float: left;
-  margin: 21px;
+  margin: 10px 10px 10px 0;
+  font-size: 0.7em;
+}
+
+.date-picker {
+  padding: 5px;
+}
+
+h2 {
+  width: 100%;
+  text-align: left;
+  color: white;
+  font-family: 'Oswald', sans-serif;
+  float: left;
+  margin: 0 5px 5px 0;
   font-size: 0.8em;
 }
 
-select {
+form {
+  width: 450px;
+}
+
+.form-column {
+  width: 150px;
+  float: left;
+}
+
+select, .date-picker {
   background: none;
   background-color: rgba(0,0,0,.25);
   border: 0;
@@ -36,13 +60,19 @@ select {
   border-radius: 3px;
   color:white;
   font-family: 'Open Sans', sans-serif;
-  font-size: 0.80em;
+  font-size: 0.7em;
   padding: 0.08em;
   margin-top: 1.5em;
   text-shadow:rgba(0,0,0,0) 0px -1px;
-  width: 210px;
+  width: 130px;
   -webkit-font-smoothing:antialiased;
   -webkit-appearance: none;
+}
+
+.scoping-div {
+  padding: 10px;
+  float: left;
+  height: 150px;
 }
 
 #time_form {
