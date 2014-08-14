@@ -1,3 +1,3 @@
-class Driver < ActiveRecord::base
+class Driver < ActiveRecord::Base
   has_many :orders
 end
