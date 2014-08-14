@@ -15,30 +15,30 @@ sprig.makeMap = function() {
 
 sprig.getMarkers = function(e) {
     e.preventDefault();
+    sprig.orderAJAX();
+    sprig.hubAJAX();
+}
+
+sprig.orderAJAX = function() {
     $.ajax({
       url:"/orders",
       type: "GET",
       dataType: "json",
-      data: $('#time_form').serialize()
-    }).done(sprig.saveMarkers)
+      data: $('form').serialize()
+    }).done(sprig.makeMarkers)
+}
 
+sprig.hubAJAX = function() {
     $.ajax({
       url:"/hubs",
       type: "GET",
       dataType: "json",
-      data: $('#time_form').serialize()
-    }).done(sprig.saveMarkers)
+      data: $('form').serialize()
+    }).done(sprig.makeMarkers)
 }
 
-sprig.saveMarkers = function(markerData) {
-  // sprig.clearMarkers();
-  sprig.markerData = markerData;
-  sprig.MakeMarkers(markerData);
-}
-
-sprig.MakeMarkers = function(markerData) {
-  var self = this
-  $.each(markerData, function(index, element) {
+sprig.makeMarkers = function(markerDataArray) {
+  $.each(markerDataArray, function(index, element) {
     if (element.hub_id) {
       var contentInfo =
       '<p>' + '<strong>Assigned to hub #: </strong>' + String(element.hub_id) + '</p>'
@@ -50,27 +50,23 @@ sprig.MakeMarkers = function(markerData) {
       var contentInfo = '<p>' + '<strong>Hub: </strong>' + String(element.id) + '</p>'
     }
 
-    var marker = self.makeMarker(index, element)
+    var marker = sprig.makeMarker(element)
 
-    google.maps.event.addListener(marker, 'mouseover', function() {
+    google.maps.event.addListener(marker, 'click', function() {
       sprig.infoWindow.setOptions({disableAutoPan : true })
       sprig.infoWindow.open(sprig.map, marker)
-      var content =  contentInfo;
-      sprig.infoWindow.setContent(content);
+      sprig.infoWindow.setContent(contentInfo);
     });
-    var temp = document.getElementById("map-canvas");
     google.maps.event.addListener(sprig.map, 'click', function() {
       sprig.infoWindow.close();
     });
   });
 }
 
-sprig.makeMarker = function (index, markerData) {
-  global = markerData
-  var myLatlng = new google.maps.LatLng(markerData.latitude, markerData.longitude)
-  var num = index
+sprig.makeMarker = function (markerData) {
+  var myLatLng = new google.maps.LatLng(markerData.latitude, markerData.longitude)
   var marker = new google.maps.Marker({
-    position: myLatlng,
+    position: myLatLng,
     title: 'Click to Zoom',
     icon: markerData.hub_id ? sprig.getOrderIcon(markerData.hub_id) : sprig.getHubIcon(markerData.id)
   });
@@ -150,20 +146,27 @@ sprig.getHubIcon = function (id) {
   return iconPath
 }
 
-sprig.clearMarkers = function() {
+sprig.clearMarkers = function(e) {
+  e.preventDefault();
   for (var i = 0; i < markersArray.length; i++) {
     markersArray[i].setMap(null);
   }
   markersArray.length = 0;
 }
 
-
+sprig.clearOtherFields = function(e) {
+  e.preventDefault();
+  $.each($('form').not(this), function (index, form) {
+    form.reset();
+  });
+  console.log(e);
+}
 
 function initializeMap() {
-    sprig.clearMarkers();
     sprig.makeMap();
-    $('#time_form').on('submit', sprig.getMarkers);
-    $('#date_form').on('submit', sprig.getMarkers);
+    $('form').on('submit', sprig.clearOtherFields);
+    $('form').on('submit', sprig.clearMarkers);
+    $('form').on('submit', sprig.getMarkers);
 }
 
 $(document).ready(function(){
