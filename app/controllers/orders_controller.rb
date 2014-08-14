@@ -4,12 +4,12 @@ class OrdersController < ApplicationController
     @orders = Order.all
 
     scope_orders_to_dates_in_time_range if params['start_time'] && params['end_time']
-    scope_orders_to_date_range if params['start_date'] != "" && params['end_date'] != ""
+    scope_orders_to_date_range if (params['start_date']  && params['end_date']) && (params['start_date'] != "" && params['end_date'] != "")
     scope_orders_to_hub if params['hub_number']
 
     respond_to do |format|
-      format.html
-      format.json { render :json => @orders.to_json  }
+      # format.html { render status: 200 }
+      format.json { render json: @orders.to_json, status: 200  }
     end
   end
 

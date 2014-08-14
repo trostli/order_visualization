@@ -1,6 +1,7 @@
 class HubsController < ApplicationController
 
   def index
+
     if params['hub_number']
       @hubs = Hub.find(params['hub_number'].to_i)
     else

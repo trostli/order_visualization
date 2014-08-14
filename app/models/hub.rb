@@ -9,4 +9,5 @@ class Hub < ActiveRecord::Base
       Hub.create! row.to_hash
     end
   end
+
 end

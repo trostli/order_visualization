@@ -18,7 +18,7 @@ sprig.getMarkers = function(e) {
     sprig.orderAJAX();
     sprig.hubAJAX();
 }
-
+//TODO: DRY up code
 sprig.orderAJAX = function() {
     $.ajax({
       url:"/orders",

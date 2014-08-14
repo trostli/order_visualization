@@ -9,4 +9,5 @@ class Order < ActiveRecord::Base
       Order.create! row.to_hash
     end
   end
+
 end
